@@ -23,6 +23,7 @@ import cellprofiler_core.pipeline
 import cellprofiler_core.setting
 import cellprofiler_core.workspace
 import tests.modules
+from cellprofiler.modules.identifyprimaryobjects import FH_NEVER, FH_THRESHOLDING, FH_DECLUMP
 
 IMAGE_NAME = "my_image"
 OBJECTS_NAME = "my_objects"
@@ -439,7 +440,7 @@ def test_fill_holes():
     x.y_name.value = "my_object"
     x.x_name.value = "my_image"
     x.exclude_size.value = False
-    x.fill_holes.value = True
+    x.fill_holes.value = FH_THRESHOLDING
     x.watershed_method.value = cellprofiler.modules.identifyprimaryobjects.WA_NONE
     x.threshold.threshold_scope.value = TS_GLOBAL
     x.threshold.global_operation.value = centrosome.threshold.TM_OTSU
@@ -476,7 +477,7 @@ def test_dont_fill_holes():
     x.threshold.threshold_range.min = 0.7
     x.threshold.threshold_range.max = 1
     x.exclude_size.value = False
-    x.fill_holes.value = False
+    x.fill_holes.value = cellprofiler.modules.identifyprimaryobjects.FH_NEVER
     x.smoothing_filter_size.value = 0
     x.automatic_smoothing.value = False
     x.watershed_method.value = cellprofiler.modules.identifyprimaryobjects.WA_NONE
@@ -554,7 +555,7 @@ def test_test_watershed_shape_shape():
     x.y_name.value = "my_object"
     x.exclude_size.value = False
     x.size_range.value = (2, 10)
-    x.fill_holes.value = False
+    x.fill_holes.value = cellprofiler.modules.identifyprimaryobjects.FH_NEVER
     x.maxima_suppression_size.value = 3
     x.automatic_suppression.value = False
     x.unclump_method.value = cellprofiler.modules.identifyprimaryobjects.UN_SHAPE
@@ -617,7 +618,7 @@ def test_test_watershed_shape_intensity():
     x.y_name.value = "my_object"
     x.exclude_size.value = False
     x.size_range.value = (2, 10)
-    x.fill_holes.value = False
+    x.fill_holes.value = cellprofiler.modules.identifyprimaryobjects.FH_NEVER
     x.maxima_suppression_size.value = 3
     x.automatic_suppression.value = False
     x.unclump_method.value = cellprofiler.modules.identifyprimaryobjects.UN_SHAPE
@@ -681,7 +682,7 @@ def test_test_watershed_intensity_distance_single():
     x.y_name.value = "my_object"
     x.exclude_size.value = False
     x.size_range.value = (4, 10)
-    x.fill_holes.value = False
+    x.fill_holes.value = cellprofiler.modules.identifyprimaryobjects.FH_NEVER
     x.maxima_suppression_size.value = 3.6
     x.automatic_suppression.value = False
     x.unclump_method.value = cellprofiler.modules.identifyprimaryobjects.UN_INTENSITY
@@ -747,7 +748,7 @@ def test_test_watershed_intensity_distance_triple():
     x.y_name.value = "my_object"
     x.exclude_size.value = False
     x.size_range.value = (2, 10)
-    x.fill_holes.value = False
+    x.fill_holes.value = cellprofiler.modules.identifyprimaryobjects.FH_NEVER
     x.smoothing_filter_size.value = 0
     x.automatic_smoothing.value = False
     x.maxima_suppression_size.value = 7.1
@@ -812,7 +813,7 @@ def test_test_watershed_intensity_distance_filter():
     x.y_name.value = "my_object"
     x.exclude_size.value = False
     x.size_range.value = (2, 10)
-    x.fill_holes.value = False
+    x.fill_holes.value = cellprofiler.modules.identifyprimaryobjects.FH_NEVER
     x.smoothing_filter_size.value = 1
     x.automatic_smoothing.value = 1
     x.maxima_suppression_size.value = 3.6
@@ -880,7 +881,7 @@ def test_test_watershed_intensity_distance_double():
     x.y_name.value = "my_object"
     x.exclude_size.value = False
     x.size_range.value = (2, 10)
-    x.fill_holes.value = False
+    x.fill_holes.value = cellprofiler.modules.identifyprimaryobjects.FH_NEVER
     x.smoothing_filter_size.value = 0
     x.automatic_smoothing.value = 0
     x.maxima_suppression_size.value = 3.6
@@ -942,7 +943,7 @@ def test_propagate():
     x.y_name.value = "my_object"
     x.exclude_size.value = False
     x.size_range.value = (2, 10)
-    x.fill_holes.value = False
+    x.fill_holes.value = cellprofiler.modules.identifyprimaryobjects.FH_NEVER
     x.smoothing_filter_size.value = 0
     x.automatic_smoothing.value = 0
     x.maxima_suppression_size.value = 7
@@ -1089,7 +1090,7 @@ def test_maxima_suppression_zero():
         x.y_name.value = "my_object"
         x.exclude_size.value = False
         x.size_range.value = (2, 10)
-        x.fill_holes.value = False
+        x.fill_holes.value = cellprofiler.modules.identifyprimaryobjects.FH_NEVER
         x.smoothing_filter_size.value = 0
         x.automatic_smoothing.value = 0
         x.maxima_suppression_size.value = distance
