@@ -1,11 +1,6 @@
-# What IDPrimary does:
-# Threshold, smooth,
-
-from . import threshold
+from cellprofiler.library.modules import threshold
 from typing import Literal
 from cellprofiler.library.functions.object_processing import (
-    get_maxima,
-    smooth_image,
     filter_on_size,
     filter_on_border,
     separate_neighboring_objects,

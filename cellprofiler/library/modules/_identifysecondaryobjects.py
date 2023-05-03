@@ -5,6 +5,7 @@ import scipy
 from cellprofiler.library.modules import threshold
 from cellprofiler.library.functions.object_processing import filter_labels
 import centrosome
+import centrosome.propagate
 
 
 def identifysecondaryobjects(
@@ -96,7 +97,10 @@ def identifysecondaryobjects(
     # * all edited labels
     # * labels touching the edge, including small removed
     #
-    labels_in = unedited_objects.copy()
+    if unedited_objects is None:
+        labels_in = objects
+    else:
+        labels_in = unedited_objects.copy()
     labels_touching_edge = numpy.hstack(
         (labels_in[0, :], labels_in[-1, :], labels_in[:, 0], labels_in[:, -1])
     )
