@@ -14,3 +14,4 @@ from ._medianfilter import medianfilter
 from ._reducenoise import reducenoise
 from ._identifyprimaryobjects import identifyprimaryobjects
 from ._identifysecondaryobjects import identifysecondaryobjects
+from ._identifytertiaryobjects import identifytertiaryobjects
